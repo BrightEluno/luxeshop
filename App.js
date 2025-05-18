@@ -74,44 +74,96 @@ export default function App() {
           <Text style={styles.locationText}>Deliver to </Text>
           <Text style={styles.locationMainText}>
             Jl. Rose No. 123 Main St, City
-          </Text>
+          </Text >
         </View>
 
         <View style={styles.categoryContainer}>
-          <View style={styles.electronic}>
-            <Image
-              style={styles.electronicImage}
-              source={require("./assets/electronic.png")}
-              resizeMode="contain"
-            />
+          <View>
+            <View style={styles.electronic}>
+              <Image
+                style={styles.electronicImage}
+                source={require("./assets/electronic.png")}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={styles.categoryText}>electronic</Text>
           </View>
-          <View style={styles.electronic}>
-            <Image
-              style={styles.electronicImage}
-              source={require("./assets/food.png")}
-              resizeMode="contain"
-            />
+
+          <View>
+            <View style={styles.electronic}>
+              <Image
+                style={styles.electronicImage}
+                source={require("./assets/food.png")}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={styles.categoryText}>Food</Text>
           </View>
-          <View style={styles.electronic}>
-            <Image
-              style={styles.electronicImage}
-              source={require("./assets/electronic.png")}
-              resizeMode="contain"
-            />
+
+          <View>
+            <View style={styles.electronic}>
+              <Image
+                style={styles.electronicImage}
+                source={require("./assets/accesories.png")}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={styles.categoryText}>Accesories</Text>
           </View>
-          <View style={styles.electronic}>
-            <Image
-              style={styles.electronicImage}
-              source={require("./assets/electronic.png")}
-              resizeMode="contain"
-            />
+
+           <View>
+            <View style={styles.electronic}>
+              <Image
+                style={styles.electronicImage}
+                source={require("./assets/beauty.png")}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={styles.categoryText}>Beauty</Text>
           </View>
-          <View style={styles.electronic}>
-            <Image
-              style={styles.electronicImage}
-              source={require("./assets/electronic.png")}
-              resizeMode="contain"
-            />
+
+          <View>
+            <View style={styles.electronic}>
+              <Image
+                style={styles.electronicImage}
+                source={require("./assets/furniture.png")}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={styles.categoryText}>Furniture</Text>
+          </View>
+
+          <View>
+            <View style={styles.electronic}>
+              <Image
+                style={styles.electronicImage}
+                source={require("./assets/fashion.png")}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={styles.categoryText}>Fashion</Text>
+          </View>
+
+          <View>
+            <View style={styles.electronic}>
+              <Image
+                style={styles.electronicImage}
+                source={require("./assets/health.png")}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={styles.categoryText}>Health</Text>
+          </View>
+
+          <View>
+            <View style={styles.electronic}>
+              <Image
+                style={styles.electronicImage}
+                source={require("./assets/stationery.png")}
+                resizeMode="contain"
+              />
+            </View>
+            <Text style={styles.categoryText}>Stationery</Text>
           </View>
         </View>
       </View>
@@ -205,15 +257,24 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   electronic: {
-    width: 75,
-    height: 75,
+    width: 60,
+    height: 60,
     borderRadius: 50,
     borderColor: "#ccc",
     borderWidth: 1,
     padding: 10,
   },
   electronicImage: {
-    width: 50,
-    height: 50,
+    width: 35,
+    height: 35,
   },
+ 
+
+  categoryText:{
+    textAlign: "center",
+    fontSize: 15,
+    color: GlobalStyles.colors.black,
+    fontWeight: "bold",
+    marginTop: 10,
+  }
 });
