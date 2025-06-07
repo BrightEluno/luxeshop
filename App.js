@@ -1,21 +1,42 @@
 import { StatusBar } from "expo-status-bar";
+import React from "react";
 import {
   Image,
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   TextInput,
+  useColorScheme,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Foundation from "react-native-vector-icons/Foundation";
 import { GlobalStyles } from "./constants/styles";
+
+const categories = [
+  { name: "Electronic", image: require("./assets/electronic.png") },
+  { name: "Food", image: require("./assets/food.png") },
+  { name: "Accesories", image: require("./assets/accesories.png") },
+  { name: "Beauty", image: require("./assets/beauty.png") },
+  { name: "Furniture", image: require("./assets/furniture.png") },
+  { name: "Fashion", image: require("./assets/fashion.png") },
+  { name: "Health", image: require("./assets/health.png") },
+  { name: "Stationery", image: require("./assets/stationery.png") },
+];
+
 export default function App() {
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
+
   return (
     <>
       <StatusBar style="auto" />
-      <View style={styles.container}>
+      <View
+        style={[
+          styles.container,
+          { backgroundColor: isDark ? "#000" : "#fff" },
+        ]}
+      >
         {/* Header: Logo + Notification Icons */}
         <View style={styles.headerContainer}>
           <View style={styles.logoContainer}>
@@ -53,9 +74,9 @@ export default function App() {
             style={styles.inputIcon}
           />
           <TextInput
-            placeholder="Find you needed..."
+            placeholder="Find what you need..."
             style={styles.searchInput}
-            keyboardType="search"
+            keyboardType="default"
           />
           <Foundation
             name="align-center"
@@ -64,6 +85,8 @@ export default function App() {
             style={styles.inputIcon2}
           />
         </View>
+
+        {/* Location Info */}
         <View style={styles.locationContainer}>
           <Ionicons
             name="location-sharp"
@@ -74,97 +97,31 @@ export default function App() {
           <Text style={styles.locationText}>Deliver to </Text>
           <Text style={styles.locationMainText}>
             Jl. Rose No. 123 Main St, City
-          </Text >
+          </Text>
         </View>
 
+        {/* Category Section */}
         <View style={styles.categoryContainer}>
-          <View>
-            <View style={styles.electronic}>
-              <Image
-                style={styles.electronicImage}
-                source={require("./assets/electronic.png")}
-                resizeMode="contain"
-              />
+          {categories.map((item, index) => (
+            <View key={index}>
+              <View style={styles.categoryItem}>
+                <Image
+                  style={styles.categoryImage}
+                  source={item.image}
+                  resizeMode="contain"
+                />
+              </View>
+              <Text style={styles.categoryText}>{item.name}</Text>
             </View>
-            <Text style={styles.categoryText}>electronic</Text>
-          </View>
+          ))}
+        </View>
 
-          <View>
-            <View style={styles.electronic}>
-              <Image
-                style={styles.electronicImage}
-                source={require("./assets/food.png")}
-                resizeMode="contain"
-              />
-            </View>
-            <Text style={styles.categoryText}>Food</Text>
-          </View>
-
-          <View>
-            <View style={styles.electronic}>
-              <Image
-                style={styles.electronicImage}
-                source={require("./assets/accesories.png")}
-                resizeMode="contain"
-              />
-            </View>
-            <Text style={styles.categoryText}>Accesories</Text>
-          </View>
-
-           <View>
-            <View style={styles.electronic}>
-              <Image
-                style={styles.electronicImage}
-                source={require("./assets/beauty.png")}
-                resizeMode="contain"
-              />
-            </View>
-            <Text style={styles.categoryText}>Beauty</Text>
-          </View>
-
-          <View>
-            <View style={styles.electronic}>
-              <Image
-                style={styles.electronicImage}
-                source={require("./assets/furniture.png")}
-                resizeMode="contain"
-              />
-            </View>
-            <Text style={styles.categoryText}>Furniture</Text>
-          </View>
-
-          <View>
-            <View style={styles.electronic}>
-              <Image
-                style={styles.electronicImage}
-                source={require("./assets/fashion.png")}
-                resizeMode="contain"
-              />
-            </View>
-            <Text style={styles.categoryText}>Fashion</Text>
-          </View>
-
-          <View>
-            <View style={styles.electronic}>
-              <Image
-                style={styles.electronicImage}
-                source={require("./assets/health.png")}
-                resizeMode="contain"
-              />
-            </View>
-            <Text style={styles.categoryText}>Health</Text>
-          </View>
-
-          <View>
-            <View style={styles.electronic}>
-              <Image
-                style={styles.electronicImage}
-                source={require("./assets/stationery.png")}
-                resizeMode="contain"
-              />
-            </View>
-            <Text style={styles.categoryText}>Stationery</Text>
-          </View>
+        {/* Flash Sale Banner */}
+        <View style={styles.flashSaleContainer}>
+          <Image
+            source={require("./assets/flash-image.png")}
+            style={styles.flashSaleImage}
+          />
         </View>
       </View>
     </>
@@ -174,7 +131,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     paddingHorizontal: 20,
     paddingTop: 50,
   },
@@ -206,7 +162,6 @@ const styles = StyleSheet.create({
     height: 40,
     paddingTop: 10,
     paddingLeft: 10,
-    textAlign: "center",
     borderRadius: 10,
     borderColor: "#ccc",
     borderWidth: 1,
@@ -247,16 +202,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: GlobalStyles.colors.black,
   },
-
   categoryContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 20,
     flexWrap: "wrap",
+    marginTop: 20,
     gap: 10,
   },
-  electronic: {
+  categoryItem: {
     width: 60,
     height: 60,
     borderRadius: 50,
@@ -264,17 +217,26 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  electronicImage: {
+  categoryImage: {
     width: 35,
     height: 35,
   },
- 
-
-  categoryText:{
+  categoryText: {
     textAlign: "center",
     fontSize: 15,
     color: GlobalStyles.colors.black,
     fontWeight: "bold",
     marginTop: 10,
-  }
+  },
+  flashSaleContainer: {
+    marginTop: 20,
+    width: "100%",
+    height: 150,
+    borderRadius: 10,
+  },
+  flashSaleImage: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 10,
+  },
 });
