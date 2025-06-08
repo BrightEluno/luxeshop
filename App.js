@@ -113,7 +113,7 @@ export default function App() {
               </View>
               <Text style={styles.categoryText}>{item.name}</Text>
             </View>
-          ))}
+          ))} 
         </View>
 
         {/* Flash Sale Banner */}
