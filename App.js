@@ -16,6 +16,7 @@ import Search from "./components/Search";
 import Header from "./components/Header";
 import Location from "./components/Location";
 import Banner from "./components/Banner";
+import FLashSale from "./components/FLashSale";
 
 export default function App() {
   // const colorScheme = useColorScheme();
@@ -41,8 +42,11 @@ export default function App() {
         {/* Category Section */}
         <Category />
 
-        {/* Flash Sale Banner */}
+        {/*  */}
         <Banner />
+
+        {/* Flash Sale Section */}
+        <FLashSale />
       </View>
     </>
   );
@@ -55,3 +59,5 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
 });
+
+// rncs
