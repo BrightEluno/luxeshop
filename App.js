@@ -1,63 +1,40 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import {
-  Image,
+  ScrollView,
   StyleSheet,
-  Text,
-  View,
-  TextInput,
-  useColorScheme,
 } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { GlobalStyles } from "./constants/styles";
-import Category from "./components/Category";
-import Search from "./components/Search";
 import Header from "./components/Header";
+import Search from "./components/Search";
 import Location from "./components/Location";
+import Category from "./components/Category";
 import Banner from "./components/Banner";
-import FLashSale from "./components/FLashSale";
+import FlashSale from "./components/FlashSale"; // renamed
+// import FLashSale from "./components/FlashSale";
 
 export default function App() {
-  // const colorScheme = useColorScheme();
-  // const isDark = colorScheme === "dark";
-
   return (
     <>
-      <StatusBar style="auto" />
-      <View
-        style={[
-          styles.container,
-          // { backgroundColor: isDark ? "#000" : "#fff" },
-        ]}
-      >
-        {/* Header: Logo + Notification Icons */}
+      <StatusBar style="dark"  />
+      <ScrollView contentContainerStyle={styles.container}>
         <Header />
-
-        {/* Search Input */}
         <Search />
-
-        {/* Location Info */}
         <Location />
-        {/* Category Section */}
         <Category />
-
-        {/*  */}
         <Banner />
-
-        {/* Flash Sale Section */}
-        <FLashSale />
-      </View>
+        <FlashSale />
+      </ScrollView>
     </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     paddingHorizontal: 20,
     paddingTop: 50,
   },
 });
+
 
 // rncs
