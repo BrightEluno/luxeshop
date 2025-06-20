@@ -46,19 +46,19 @@ export default function FlashSale() {
             <Text style={{ fontWeight: "600" }}> 100+ sold</Text>
           </View>
           <View style={styles.productLocation}>
-            <FontAwesome6 name="location-dot" size={24} color="#fa5a2a" />
+            <FontAwesome6 name="location-dot" size={20} color="#fa5a2a" />
             <Text style={styles.productLocationText}>lagos</Text>
           </View>
         </View>
         <View style={styles.products}>
           <View style={styles.productImageContainer}>
             <Image
-              source={require("../assets/product_s10.png")}
+              source={require("../assets/ipad_pro.jpg")}
               style={styles.productImage}
             />
           </View>
           <Text style={styles.productTitle}>
-            Apple Watch Ultra with Alpine loop
+            ipad pro 6th generation 11 inch 2022
           </Text>
           <Text style={styles.productPrice}>$799.00</Text>
           <View style={styles.productRating}>
@@ -73,7 +73,7 @@ export default function FlashSale() {
             <Text style={{ fontWeight: "600" }}> 100+ sold</Text>
           </View>
           <View style={styles.productLocation}>
-            <FontAwesome6 name="location-dot" size={24} color="#fa5a2a" />
+            <FontAwesome6 name="location-dot" size={20} color="#fa5a2a" />
             <Text style={styles.productLocationText}>lagos</Text>
           </View>
         </View>
