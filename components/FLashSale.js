@@ -66,7 +66,7 @@ export default function FlashSale() {
             <Text style={styles.productRatingText}>4.9</Text>
             <Octicons
               name="dot-fill"
-              size={15}
+              size={15} 
               color="#ccc"
               style={{ marginLeft: 5 }}
             />
