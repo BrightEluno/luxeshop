@@ -9,7 +9,7 @@ import Search from "./components/Search";
 import Location from "./components/Location";
 import Category from "./components/Category";
 import Banner from "./components/Banner";
-import FlashSale from "./components/FlashSale"; // renamed
+import FlashSale from "./components/FlashSale";
 // import FLashSale from "./components/FlashSale";
 
 export default function App() {

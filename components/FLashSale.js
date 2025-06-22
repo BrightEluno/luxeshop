@@ -1,162 +1,169 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import React from "react";
 import { GlobalStyles } from "../constants/styles";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Octicons from "@expo/vector-icons/Octicons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
+const products = [
+  {
+    id: 1,
+    title: "Apple Watch Ultra with Alpine loop",
+    image: require("../assets/product_s10.png"),
+    price: "$799.00",
+    location: "Lagos",
+    rating: 4.9,
+    sold: "100+ sold",
+    discount: "15% Off",
+  },
+  {
+    id: 2,
+    title: "iPad Pro 6th generation 11 inch 2022",
+    image: require("../assets/ipad_pro.jpg"),
+    price: "$799.00",
+    location: "Lagos",
+    rating: 4.9,
+    sold: "100+ sold",
+  },
+  {
+    id: 3,
+    title: "iPad Pro 6th generation 11 inch 2022",
+    image: require("../assets/ipad_pro.jpg"),
+    price: "$799.00",
+    location: "Lagos",
+    rating: 4.9,
+    sold: "100+ sold",
+  },
+  {
+    id: 4,
+    title: "iPad Pro 6th generation 11 inch 2022",
+    image: require("../assets/ipad_pro.jpg"),
+    price: "$799.00",
+    location: "Lagos",
+    rating: 4.9,
+    sold: "100+ sold",
+  },
+];
+
 export default function FlashSale() {
   return (
-    <View>
+    <ScrollView style={styles.wrapper}>
       <View style={styles.container}>
         <View style={styles.containerTitle}>
-          <Text style={styles.title}>FLash Sale</Text>
-          <Text style={styles.endsIn}>Ends In </Text>
-          <Text style={styles.timer}>12:58:32</Text>
+          <Text style={styles.title}>Flash Sale</Text>
+          <View style={styles.timerWrap}>
+            <Text style={styles.endsIn}>Ends In</Text>
+            <Text style={styles.timer}>12:58:32</Text>
+          </View>
         </View>
-        <View>
-          <Text style={styles.seeAll}>See all</Text>
-        </View>
+        <Text style={styles.seeAll}>See all</Text>
       </View>
 
-      <View style={styles.productContainer}>
-        <View style={styles.products}>
-          <View>
-            <Text style={styles.productOff}>15% 0ff</Text>
+      <View style={styles.productGrid}>
+        {products.map((item) => (
+          <View key={item.id} style={styles.products}>
+            {item.discount && <Text style={styles.productOff}>{item.discount}</Text>}
+
+            <View style={styles.productImageContainer}>
+              <Image source={item.image} style={styles.productImage} />
+            </View>
+
+            <Text style={styles.productTitle}>{item.title}</Text>
+            <Text style={styles.productPrice}>{item.price}</Text>
+
+            <View style={styles.productRating}>
+              <AntDesign name="star" size={16} color="#edaa34" />
+              <Text style={styles.productRatingText}>{item.rating}</Text>
+              <Octicons
+                name="dot-fill"
+                size={15}
+                color="#ccc"
+                style={{ marginLeft: 5 }}
+              />
+              <Text style={{ fontWeight: "600" }}> {item.sold}</Text>
+            </View>
+
+            <View style={styles.productLocation}>
+              <FontAwesome6 name="location-dot" size={20} color="#fa5a2a" />
+              <Text style={styles.productLocationText}>{item.location}</Text>
+            </View>
           </View>
-          <View style={styles.productImageContainer}>
-            <Image
-              source={require("../assets/product_s10.png")}
-              style={styles.productImage}
-            />
-          </View>
-          <Text style={styles.productTitle}>
-            Apple Watch Ultra with Alpine loop
-          </Text>
-          <Text style={styles.productPrice}>$799.00</Text>
-          <View style={styles.productRating}>
-            <AntDesign name="star" size={16} color="#edaa34" />
-            <Text style={styles.productRatingText}>4.9</Text>
-            <Octicons
-              name="dot-fill"
-              size={15}
-              color="#ccc"
-              style={{ marginLeft: 5 }}
-            />
-            <Text style={{ fontWeight: "600" }}> 100+ sold</Text>
-          </View>
-          <View style={styles.productLocation}>
-            <FontAwesome6 name="location-dot" size={20} color="#fa5a2a" />
-            <Text style={styles.productLocationText}>lagos</Text>
-          </View>
-        </View>
-        <View style={styles.products}>
-          <View style={styles.productImageContainer}>
-            <Image
-              source={require("../assets/ipad_pro.jpg")}
-              style={styles.productImage}
-            />
-          </View>
-          <Text style={styles.productTitle}>
-            ipad pro 6th generation 11 inch 2022
-          </Text>
-          <Text style={styles.productPrice}>$799.00</Text>
-          <View style={styles.productRating}>
-            <AntDesign name="star" size={16} color="#edaa34" />
-            <Text style={styles.productRatingText}>4.9</Text>
-            <Octicons
-              name="dot-fill"
-              size={15} 
-              color="#ccc"
-              style={{ marginLeft: 5 }}
-            />
-            <Text style={{ fontWeight: "600" }}> 100+ sold</Text>
-          </View>
-          <View style={styles.productLocation}>
-            <FontAwesome6 name="location-dot" size={20} color="#fa5a2a" />
-            <Text style={styles.productLocationText}>lagos</Text>
-          </View>
-        </View>
+        ))}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    paddingHorizontal: 15,
+  },
   container: {
-    // flex: 1,
-    // paddingHorizontal: 20,
     marginTop: 25,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   containerTitle: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 10,
   },
-
+  timerWrap: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    // marginBottom: 10,
   },
   endsIn: {
     fontSize: 18,
     color: "gray",
-    marginLeft: 10,
-    alignSelf: "center",
   },
   timer: {
     fontSize: 18,
-    color: "#e3e3e3",
+    color: "#fff",
     backgroundColor: "#f92b4a",
     width: 100,
     textAlign: "center",
     borderRadius: 15,
-    alignSelf: "center",
     padding: 5,
   },
   seeAll: {
     color: GlobalStyles.colors.primary,
-    alignSelf: "center",
     fontSize: 16,
     fontWeight: "bold",
-    marginTop: 5,
   },
-
-  // Product styles
-  productContainer: {
+  productGrid: {
     flexDirection: "row",
-    resizeMode: "contain",
-    width: "100%",
-    gap: 15,
+    flexWrap: "wrap",
     justifyContent: "space-between",
-    alignContent: "center",
-  },
+    marginTop: 20,
+    rowGap: 15,
+    width: "100%",
 
+  },
   products: {
-    flexDirection: "col",
     width: "48%",
     borderRadius: 10,
     borderColor: "#e3e3e3",
     borderWidth: 2,
-    marginTop: 20,
     padding: 10,
+    position: "relative",
   },
-
   productOff: {
     position: "absolute",
-    // Width: 100,
-    // height: 100,
-    // top: 10,
     right: 10,
     backgroundColor: "#fee6ea",
     padding: 5,
     borderRadius: 10,
     color: "#c95770",
     fontWeight: "bold",
+    zIndex: 1,
   },
-
   productImageContainer: {
     justifyContent: "center",
     alignItems: "center",
@@ -178,7 +185,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginTop: 5,
-    // color: GlobalStyles.colors.primary,
   },
   productRating: {
     flexDirection: "row",
@@ -188,7 +194,6 @@ const styles = StyleSheet.create({
   productRatingText: {
     marginLeft: 5,
     fontWeight: "bold",
-    // color: GlobalStyles.colors.gray500,
   },
   productLocation: {
     flexDirection: "row",
