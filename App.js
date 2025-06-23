@@ -1,40 +1,53 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-  ScrollView,
-  StyleSheet,
-} from "react-native";
-import Header from "./components/Header";
-import Search from "./components/Search";
-import Location from "./components/Location";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
+import { GlobalStyles } from "./constants/styles";
+import Home from "./screens/Home";
 import Category from "./components/Category";
-import Banner from "./components/Banner";
-import FlashSale from "./components/FlashSale";
-// import FLashSale from "./components/FlashSale";
+import Wishlist from "./screens/Wishlist";
+
+const BottomTab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <>
-      <StatusBar style="dark"  />
-      <ScrollView contentContainerStyle={styles.container}>
-        <Header />
-        <Search />
-        <Location />
-        <Category />
-        <Banner />
-        <FlashSale />
-      </ScrollView>
+      <NavigationContainer>
+        <StatusBar style="dark" />
+        <BottomTab.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: "#fff" },
+            // tabBarStyle: { backgroundColor: "" },
+            tabBarActiveTintColor: GlobalStyles.colors.primary,
+          }}
+        >
+          <BottomTab.Screen
+            name="Home"
+            component={Home}
+            options={{
+              title: "Home",
+              headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="home-sharp" color={color} size={size} />
+              ),
+            }}
+          />
+
+          <BottomTab.Screen
+            name="Wishlist"
+            component={Wishlist}
+            options={{
+              title: "Wishlist",
+              headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="heart-sharp" color={color} size={size} />
+              ),
+            }}
+          />
+        </BottomTab.Navigator>
+      </NavigationContainer>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    padding: 20,
-    paddingTop: 50,
-  },
-});
-
-
-// rncs

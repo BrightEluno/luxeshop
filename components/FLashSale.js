@@ -47,7 +47,7 @@ const products = [
 
 export default function FlashSale() {
   return (
-    <ScrollView style={styles.wrapper}>
+    <View style={styles.wrapper}>
       <View style={styles.container}>
         <View style={styles.containerTitle}>
           <Text style={styles.title}>Flash Sale</Text>
@@ -90,9 +90,10 @@ export default function FlashSale() {
           </View>
         ))}
       </View>
-    </ScrollView>
+    </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   wrapper: {

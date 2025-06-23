@@ -5,3 +5,5 @@ export const GlobalStyles = {
         black: '#030711'
       },
 }
+
+// rncs
