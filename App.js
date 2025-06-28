@@ -34,7 +34,6 @@ export default function App() {
               ),
             }}
           />
-
           <BottomTab.Screen
             name="Wishlist"
             component={Wishlist}
