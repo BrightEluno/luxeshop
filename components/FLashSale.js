@@ -8,8 +8,8 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 const products = [
   {
     id: 1,
-    title: "Apple Watch Ultra with Alpine loop",
-    image: require("../assets/product_s10.png"),
+    title: "MacBook Air 13.6 inch M4 chip 2023",
+    image: require("../assets/MacBook-Air.png"),
     price: "$799.00",
     location: "Lagos",
     rating: 4.9,
@@ -19,16 +19,17 @@ const products = [
   {
     id: 2,
     title: "iPad Pro 6th generation 11 inch 2022",
-    image: require("../assets/ipad_pro.jpg"),
+    image: require("../assets/iphone_16.png"),
     price: "$799.00",
     location: "Lagos",
     rating: 4.9,
     sold: "100+ sold",
+    discount: "30% Off",
   },
   {
     id: 3,
-    title: "iPad Pro 6th generation 11 inch 2022",
-    image: require("../assets/ipad_pro.jpg"),
+    title: "Apple Watch Ultra with Alpine loop",
+    image: require("../assets/product_s10.png"),
     price: "$799.00",
     location: "Lagos",
     rating: 4.9,
@@ -98,7 +99,7 @@ export default function FlashSale() {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    paddingHorizontal: 15,
+    paddingHorizontal: 5,
   },
   container: {
     marginTop: 25,
@@ -157,6 +158,7 @@ const styles = StyleSheet.create({
   },
   productOff: {
     position: "absolute",
+    top: 10,
     right: 10,
     backgroundColor: "#fee6ea",
     padding: 5,
@@ -169,11 +171,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: 150,
-    marginTop: 10,
+    marginTop: 5,
   },
   productImage: {
     width: "100%",
-    height: 130,
+    height: 140,
     resizeMode: "contain",
     marginTop: 10,
   },

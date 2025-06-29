@@ -3,6 +3,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 import { GlobalStyles } from "./constants/styles";
 import Home from "./screens/Home";
@@ -42,6 +43,28 @@ export default function App() {
               headerShown: false,
               tabBarIcon: ({ color, size }) => (
                 <Ionicons name="heart-sharp" color={color} size={size} />
+              ),
+            }}
+          />
+          <BottomTab.Screen
+            name="transaction"
+            component={Wishlist}
+            options={{
+              title: "Transaction",
+              headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="receipt-outline" color={color} size={size} />
+              ),
+            }}
+          />
+          <BottomTab.Screen
+            name="profile"
+            component={Wishlist}
+            options={{
+              title: "Profile",
+              headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <FontAwesome6 name="user" size={size} color={color} />
               ),
             }}
           />
